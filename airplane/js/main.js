@@ -44,6 +44,7 @@ var myfjH = 70;
 var an = null;
 var apda = true;
 var resetPd = true;
+var wdpzBtn = false;
 $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
 var yidongFun = function(a){
       $(a).addClass("buji1");
@@ -310,11 +311,13 @@ function impact(obj, dobj,a) {
             selfplan.imagenode.src = "image/buji_fj.gif";
             selfplan.plansizeX = 105;
             selfplan.plansizeY = 108;
-            zdLeft = 43;
+            zdLeft = 44;
             bBtn = false;
+            wdpzBtn = true;
             addClassFun();
             setTimeout(function(){
                     bBtn = true;
+                    wdpzBtn = false;
                     selfplan.imagenode.src = "image/my_feiji.png";
                     selfplan.plansizeX = 70;
                     selfplan.plansizeY = 70;
@@ -568,44 +571,55 @@ function start(){
             //判断碰撞本方飞机
             if(enemys[j].planisdie==false){
                 if(enemys[j].imagenode.offsetLeft+enemys[j].plansizeX>=selfplan.imagenode.offsetLeft&&enemys[j].imagenode.offsetLeft<=selfplan.imagenode.offsetLeft+selfplan.plansizeX){
-                  if(enemys[j].imagenode.offsetTop+enemys[j].plansizeY>=selfplan.imagenode.offsetTop+40&&enemys[j].imagenode.offsetTop<=selfplan.imagenode.offsetTop-20+selfplan.plansizeY && bBtn){
-                      //碰撞本方飞机，游戏结束，统计分数
-                     console.log(1)
-                      bBtn = false;
-                      selfplan.imagenode.src="image/bf_fjbz.gif";
-                      var arrPlan = [ourPlan.style.top,ourPlan.style.left];
-                      setTimeout(function(){
-                            ourPlan.style.display = "none";
-                            selfplan.imagenode.src="image/my_feiji.png";
-                            chance--;
-                            if(chance <= -1) chance = -1;
-                            if(chance == -1){
-                                   clearInterval(set);
-                                   $("#audio").find("audio").get(0).pause();
-                                   $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
-                                       $("#endGame").show();
-                                       $("#planscore").html($("#label").html());
-                                    });
-                                    zantingcsFun();
-                                    return false;
-                            }else{
-                            	ourPlan.style.top = document.documentElement.clientHeight - selfplan.plansizeY - 10 + "px";
-                            	ourPlan.style.left = (document.documentElement.clientWidth - selfplan.plansizeX)/2 + "px";
+                  if(enemys[j].imagenode.offsetTop+enemys[j].plansizeY>=selfplan.imagenode.offsetTop+40&&enemys[j].imagenode.offsetTop<=selfplan.imagenode.offsetTop-20+selfplan.plansizeY){
+                    if(wdpzBtn){
+                            //碰撞无敌飞机
+                           enemys[j].planhp=enemys[j].planhp-bullets[k].bulletattach;
+                            //敌机血量为0，敌机图片换为爆炸图片，死亡标记为true，计分
+                            if(enemys[j].planhp==0){
+                                scores=scores+enemys[j].planscore;
+                                scorelabel.innerHTML=scores;
+                                enemys[j].imagenode.src=enemys[j].planboomimage;
+                                enemys[j].planisdie=true;
                             }
-                            if(chance <=-1) chance = 0;
-                            haveChance.innerHTML = chance;
-                       },1200);
-                       setTimeout(function(){
-                            ourPlan.style.display = "block";
-                       },1300);
-                      if(document.removeEventListener){
-                          mainDiv.removeEventListener("touchstart",yidong,true);
-                          bodyobj.removeEventListener("touchstart",bianjie,true);
-                      }
-                      setTimeout(function(){
-                         $("#ourplan").animate({top : arrPlan[0],left : arrPlan[1] },200);
-                      },2200);
-                      setTimeout(function(){bBtn = true;},4000);
+                    }
+                    if(bBtn){
+                              selfplan.imagenode.src="image/bf_fjbz.gif";
+                              var arrPlan = [ourPlan.style.top,ourPlan.style.left];
+                              setTimeout(function(){
+                                    ourPlan.style.display = "none";
+                                    selfplan.imagenode.src="image/my_feiji.png";
+                                    chance--;
+                                    if(chance <= -1) chance = -1;
+                                    if(chance == -1){
+                                           clearInterval(set);
+                                           $("#audio").find("audio").get(0).pause();
+                                           $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
+                                               $("#endGame").show();
+                                               $("#planscore").html($("#label").html());
+                                            });
+                                            zantingcsFun();
+                                            return false;
+                                    }else{
+                                    	ourPlan.style.top = document.documentElement.clientHeight - selfplan.plansizeY - 10 + "px";
+                                    	ourPlan.style.left = (document.documentElement.clientWidth - selfplan.plansizeX)/2 + "px";
+                                    }
+                                    if(chance <=-1) chance = 0;
+                                    haveChance.innerHTML = chance;
+                               },1200);
+                               setTimeout(function(){
+                                    ourPlan.style.display = "block";
+                               },1300);
+                              if(document.removeEventListener){
+                                  mainDiv.removeEventListener("touchstart",yidong,true);
+                                  bodyobj.removeEventListener("touchstart",bianjie,true);
+                              }
+                              setTimeout(function(){
+                                 $("#ourplan").animate({top : arrPlan[0],left : arrPlan[1] },200);
+                              },2200);
+                              bBtn = false;
+                              setTimeout(function(){bBtn = true;},4000);
+                        }
                    }
                 }
                 //判断子弹与敌机碰撞
