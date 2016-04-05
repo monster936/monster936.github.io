@@ -369,7 +369,6 @@ var yidong=function(){
         if(resetPd){
             an = setTimeout(function(){
                 $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
-                zantingcsFun();
                 $("#buji,#buji1,#buji2,#buji3").removeClass("yt cz");
                 clickStart("#buji","yt",numCf);
                 clickStart("#buji1","yt",numCf + 35000);
@@ -571,6 +570,7 @@ function start(){
                 if(enemys[j].imagenode.offsetLeft+enemys[j].plansizeX>=selfplan.imagenode.offsetLeft&&enemys[j].imagenode.offsetLeft<=selfplan.imagenode.offsetLeft+selfplan.plansizeX){
                   if(enemys[j].imagenode.offsetTop+enemys[j].plansizeY>=selfplan.imagenode.offsetTop+40&&enemys[j].imagenode.offsetTop<=selfplan.imagenode.offsetTop-20+selfplan.plansizeY && bBtn){
                       //碰撞本方飞机，游戏结束，统计分数
+                     console.log(1)
                       bBtn = false;
                       selfplan.imagenode.src="image/bf_fjbz.gif";
                       var arrPlan = [ourPlan.style.top,ourPlan.style.left];
@@ -691,14 +691,7 @@ $("#studentCome").bind("click",function(){
            $("#endGame").show();
            $("#planscore").hide();
           $("#gameBtn").find("span:first").remove();
-           $("#gameBtn").prepend('<span id="startGame1" onclick="begin();">继续游戏</span>');
-           $("#startGame1").unbind("click").bind("click",function(){
-                  $("#hbBg").animate({opacity :0},300,function(){
-                      $("#hbBg").css("position","static");
-                      $(".oDiv4").hide();
-                  });
-                  $("#endGame").hide();
-             });
+           $("#gameBtn").prepend('<span id="startGame1" onclick="jixu()">继续游戏</span>');
         });
  });
 /*完成界面的初始化
