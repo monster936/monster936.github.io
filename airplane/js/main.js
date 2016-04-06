@@ -1,3 +1,17 @@
+$(function(){
+    (function(){
+        var oTimer = setInterval(function(){
+        iNoww +=0.52;
+        if(iNoww > 22.2){
+            clearInterval(oTimer);
+            $(".loading").hide();
+            $("#startdiv").show();
+            return false;
+        };
+        $(".loadingAft").css("width",iNoww+"rem");
+    },100);
+})();
+});
 var $$ = function(obj){ return typeof obj=="string" ? document.getElementById(obj) : obj};
 $(".mainCon").css("height",$(window).height());
 $$("startdiv").style.height = document.documentElement.clientHeight + "px";
@@ -110,20 +124,6 @@ var zantingcsFun = function(){
    zantingFun("#buji2","buji1");
    zantingFun("#buji3","buji1");
 };
-$(function(){
-    (function(){
-        var oTimer = setInterval(function(){
-        iNoww +=1.04;
-        if(iNoww > 22.2){
-            clearInterval(oTimer);
-            $(".loading").hide();
-            $("#startdiv").show();
-            return false;
-        };
-        $(".loadingAft").css("width",iNoww+"rem");
-    },100);
-})();
-})
 
 /*创建飞机类*/
 function plan(hp,X,Y,sizeX,sizeY,score,dietime,sudu,boomimage,imagesrc,classNm){
