@@ -41,7 +41,7 @@ var bBtn = true;
 var a = 1;
 var number=0;
 var zdLeft = 28;
-var fjzd = "image/bullet1.png"
+var fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png"
 /*加载页面开始*/
 var times = 2000;
 var iNoww = 0;
@@ -212,8 +212,8 @@ function random(min,max){
 }
 /*创建本方飞机类*/
 function ourplan(X,Y){
-    var imagesrc="image/my_feiji.png";
-    plan.call(this,1,X,Y,myfjW,myfjH,0,660,0,"image/bf_fjbz.gif",imagesrc);
+    var imagesrc="http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
+    plan.call(this,1,X,Y,myfjW,myfjH,0,660,0,"http://zhenimg.com/marketpic/appimg/2015brand/bf_fjbz.gif",imagesrc);
     this.imagenode.setAttribute('id','ourplan');
 }
 
@@ -249,7 +249,7 @@ function impact(obj, dobj,a) {
               }
             setTimeout(function(){
                      zdLeft = 28;
-                     fjzd = "image/bullet1.png";
+                     fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
                      swTime1 = 400;
                      swTime2 = 780;
                      pd = 1;
@@ -258,7 +258,7 @@ function impact(obj, dobj,a) {
             zdLeft = 23;
             swTime1 = 80;
             swTime2 = 20;
-            fjzd = "image/bullet2.png"
+            fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet2.png"
             $("#buji").stop();
             $("#buji").fadeOut(300,function(){
                 $("#buji").css("top",0);
@@ -288,14 +288,14 @@ function impact(obj, dobj,a) {
               }
             setTimeout(function(){
                      zdLeft = 28;
-                     fjzd = "image/bullet1.png";
+                     fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
                     swTime1 = 400;
                     swTime2 = 780;
                     ppd = 1;
             },25000)
             ppd= 0;
             zdLeft = 23;
-            fjzd = "image/bullet2.png";
+            fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet2.png";
             swTime1 = 80;
             swTime2 = 20;
             $("#buji2").stop();
@@ -308,7 +308,7 @@ function impact(obj, dobj,a) {
             if(bBtn){
                   hbFun(".oDiv",".oDiv3");
             }
-            selfplan.imagenode.src = "image/buji_fj.gif";
+            selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/buji_fj.gif";
             selfplan.plansizeX = 105;
             selfplan.plansizeY = 108;
             zdLeft = 44;
@@ -318,7 +318,7 @@ function impact(obj, dobj,a) {
             setTimeout(function(){
                     bBtn = true;
                     wdpzBtn = false;
-                    selfplan.imagenode.src = "image/my_feiji.png";
+                    selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
                     selfplan.plansizeX = 70;
                     selfplan.plansizeY = 70;
                     zdLeft = 28;
@@ -510,17 +510,17 @@ function start(){
         mark1++;
         //中飞机
         if(mark1%5==0){
-            enemys.push(new enemy(6,5,250,46,60,5000,swTime1,random(1,4),"image/middle_fjbz.gif","image/enemy3_fly_1.png","airplan"));
+            enemys.push(new enemy(6,5,250,46,60,5000,swTime1,random(1,4),"http://zhenimg.com/marketpic/appimg/2015brand/middle_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy3_fly_1.png","airplan"));
         }
         //大飞机
         if(mark1==20){
-            enemys.push(new enemy(12,25,200,110,164,3000,swTime2,1,"image/big_fjbz.gif","image/enemy2_fly_1.png","airplan airplan1"));
+            enemys.push(new enemy(12,25,200,110,164,3000,swTime2,1,"http://zhenimg.com/marketpic/appimg/2015brand/big_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy2_fly_1.png","airplan airplan1"));
             $(".airplan1").css("top","-10rem");
             mark1=0;
         }
        //小飞机
         else{
-            enemys.push(new enemy(1,1,255,34,24,1000,swTime1,random(1,5),"image/small_fjbz.gif","image/enemy1_fly_1.png","airplan"));
+            enemys.push(new enemy(1,1,255,34,24,1000,swTime1,random(1,5),"http://zhenimg.com/marketpic/appimg/2015brand/small_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy1_fly_1.png","airplan"));
         }
         mark=0;
     }
@@ -584,11 +584,11 @@ function start(){
                             }
                     }
                     if(bBtn){
-                              selfplan.imagenode.src="image/bf_fjbz.gif";
+                              selfplan.imagenode.src="http://zhenimg.com/marketpic/appimg/2015brand/bf_fjbz.gif";
                               var arrPlan = [ourPlan.style.top,ourPlan.style.left];
                               setTimeout(function(){
                                     ourPlan.style.display = "none";
-                                    selfplan.imagenode.src="image/my_feiji.png";
+                                    selfplan.imagenode.src="http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
                                     chance--;
                                     if(chance <= -1) chance = -1;
                                     if(chance == -1){
