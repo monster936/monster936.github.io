@@ -32,7 +32,7 @@ button{
 }
 .oDiv{width: 27rem;
     height:48rem;
-    background-image:url(../image/start_bg.jpg) ;
+    background-image:url(../image/start_bg.jpg);
     background-size:100%;
     display: none;
     position:absolute;
@@ -43,20 +43,19 @@ button{
 .oDiv2,.oDiv3,.oDiv4{
     width: 27rem;
     height:48rem;
-    background-image:url(../image/start_bg.jpg) ;
     background-size:100%;
     display: none;
     position:absolute;
     top:0;
     left:0;
     z-index:1;
-    background-image:url(../image/bg1.jpg) ;
+    background:url(../image/bg1.jpg) no-repeat;
 }
 .oDiv3{
-    background-image:url(../image/bg2.jpg) ;
+    background-image:url(../image/bg2.jpg);
 }
 .oDiv4{
-    background-image:url(../image/bg3.jpg) ;
+    background-image:url(../image/bg3.jpg);
     z-index:5;
 }
 .oDiv4 .bmtdBtn{float:right;width:10.95rem;height:2.5rem;margin:14rem 2.6rem 0 0;text-indent:-99999em;}
@@ -93,8 +92,8 @@ button{
 }
 .planscore{text-align:center;padding-top:2.1rem;font-size:2.25rem;color:#fff;}
 #buji,#buji1,#buji2,#buji3{background: url(../image/buji1.png) no-repeat;width:5.025rem;height:8.35rem;position:absolute;top:0;left:21rem;background-size:100%;z-index:2;display:none;}
-#buji1{background: url(../image/buji2.png) no-repeat;width:5rem;height:8.2rem;background-size:100%;}
-#buji2{background: url(../image/buji3.png) no-repeat;width:4.8rem;height:8.175rem;background-size:100%;}
+#buji1{background-image:url(../image/buji2.png);width:5rem;height:8.2rem;background-size:100%;}
+#buji2{background-image:url(../image/buji3.png);width:4.8rem;height:8.175rem;background-size:100%;}
 .buji1{-webkit-transform-origin:50% 100%;-webkit-animation:roll 2s linear infinite normal;}
 @-webkit-keyframes roll {
     0% {-webkit-transform: rotate(0deg);}
@@ -110,7 +109,7 @@ button{
 .loadArea{width:21.8rem;height:2.55rem;margin: 25.6rem auto 0;overflow: hidden;position:relative;}
 .loadArea .loadingBef{width:21.8rem;height:2.55rem;background-color:#c6c9ce;}
 .loadArea .loadingAft{width:0;height:2.55rem;background-color:#00ceff;position:absolute;top:0;left:0;z-index:0;}
-.loadArea .ztBg{width:18.275rem;height:1.15rem;background-image: url(../image/zt_bg.png);background-size:100%;position:absolute;top:.7rem;left:1.95rem;z-index:1;}
+.loadArea .ztBg{width:18.275rem;height:1.15rem;background: url(../image/zt_bg.png) no-repeat;background-size:100%;position:absolute;top:.7rem;left:1.95rem;z-index:1;}
 .ztBtn{float:left;margin:.1rem 0 0 .35rem;width:1.95rem;height:1.85rem;background: url(../image/ztl_bg.png) no-repeat;z-index:10;background-size:100%;}
 #contentdiv .hbBg{width:100%;height:100%;background-color:#000;opacity:0;top:0;left:0; z-index:10;}
 #contentdiv .ztArea{position: fixed;width:100%;height:100%;top:0;left:0; z-index:12;overflow:hidden;display:none;}
@@ -124,5 +123,5 @@ button{
 .fjMs .msIcon{font-size:1.5rem;}
 .fjMs #haveChance{font-size:1.4rem;}
 .audio{position:absolute;width:27rem;bottom:1rem;left:0;}
-.audio .audioKey{float:right;margin-right:1rem;background-image: url(../image/audio_bg.png);width:3.35rem;height:3.3rem;background-size:100%;}
+.audio .audioKey{float:right;margin-right:1rem;background: url(../image/audio_bg.png) no-repeat;width:3.35rem;height:3.3rem;background-size:100%;}
 #endGame .gameBtn{margin-top: .3rem;}
