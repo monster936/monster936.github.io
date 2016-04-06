@@ -46,7 +46,7 @@ var fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png"
 var times = 2000;
 var iNoww = 0;
 var globleBtn = true;
-var numCf = 20000;
+var numCf = 10000;
 var pd = 1;
 var ppd = 1;
 var zdpd = true;
@@ -280,7 +280,7 @@ function impact(obj, dobj,a) {
               $("#buji1").fadeOut(300,function(){
                 $("#buji1").css("top",0);
             });
-              $("#buji1").addClass("cz");
+            $("#buji1").addClass("cz");
          }
          if(a == 3){  /*补给3*/
                if(ppd == 1){
@@ -373,11 +373,12 @@ var yidong=function(){
             an = setTimeout(function(){
                 $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
                 $("#buji,#buji1,#buji2,#buji3").removeClass("yt cz");
+                numCf = 5000;
                 clickStart("#buji","yt",numCf);
                 clickStart("#buji1","yt",numCf + 35000);
-                clickStart("#buji2","yt",numCf + 70000);
-                clickStart("#buji3","yt",numCf + 105000);
-             },20000)
+                clickStart("#buji2","yt",numCf + 65000);
+                clickStart("#buji3","yt",numCf + 95000);
+             },25000)
       }
       resetPd = false;
   }
@@ -466,11 +467,12 @@ if(document.addEventListener){
         $("#hbBg").animate({opacity :0},300,function(){
             $("#hbBg").css("position","static");
         });
-        set=setInterval(start,20)
+        set=setInterval(start,20);
+        numCf = 5000;
         contineFun("#buji","yt",numCf);
-        contineFun("#buji1","yt",numCf + 35000);
+        contineFun("#buji1","yt",numCf + 40000);
         contineFun("#buji2","yt",numCf + 70000);
-        contineFun("#buji3","yt",numCf + 105000);
+        contineFun("#buji3","yt",numCf + 100000);
     });
 //    suspenddiv.getElementsByTagName("button")[1].addEventListener("click",chongxinkaishi,true);
     //为暂停界面的返回主页按钮添加事件
@@ -660,9 +662,9 @@ function begin(){
       });
     })();
     clickStart("#buji","yt",numCf);
-    clickStart("#buji1","yt",numCf + 35000);
+    clickStart("#buji1","yt",numCf + 40000);
     clickStart("#buji2","yt",numCf + 70000);
-    clickStart("#buji3","yt",numCf + 105000);
+    clickStart("#buji3","yt",numCf + 100000);
    $("#oDiv").css("display","block");
     $(".oDiv1").css("display","block");
     startdiv.style.display="none";
