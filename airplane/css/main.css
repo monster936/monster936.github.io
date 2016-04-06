@@ -93,8 +93,8 @@ button{
     font-weight: bold;
 }
 .planscore{text-align:center;padding-top:2.1rem;font-size:2.25rem;color:#fff;}
-#buji,#buji1,#buji2,#buji3{background: url(http://zhenimg.com/marketpic/appimg/2015brand/buji1.png) no-repeat;width:5.025rem;height:8.35rem;position:absolute;top:0;left:21rem;background-size:100%;z-index:2;display:none;}
-#buji1{background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/buji2.png);width:5rem;height:8.2rem;background-size:100%;}
+#buji,#buji1,#buji2,#buji3{background: url(http://zhenimg.com/marketpic/appimg/2015brand/buji1.png) no-repeat;width:5.025rem;height:8.35rem;position:absolute;top:0;left:.4rem;background-size:100%;z-index:2;display:none;}
+#buji1{background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/buji2.png);width:5rem;height:8.2rem;background-size:100%;left:21rem;}
 #buji2{background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/buji3.png);width:4.8rem;height:8.175rem;background-size:100%;}
 .buji1{-webkit-transform-origin:50% 100%;-webkit-animation:roll 2s linear infinite normal;}
 @-webkit-keyframes roll {
@@ -104,7 +104,7 @@ button{
     75% {-webkit-transform: rotate(5deg);}
     100% {-webkit-transform: rotate(0deg);}
 }
-#buji3{background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/bhz_bg.png);width:5.3rem;height:5.35rem;overflow:hidden;}
+#buji3{background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/bhz_bg.png);width:5.3rem;height:5.35rem;overflow:hidden;left:21rem;}
 #buji3 span{display:block;width:2.9rem;height:4.15rem;margin:.6rem auto 0;background-image:url(http://zhenimg.com/marketpic/appimg/2015brand/buji4.png);background-size:100%;}
 .mainCon{overflow:hidden;width:27rem;}
 .loading{width: 27rem;background: url(http://zhenimg.com/marketpic/appimg/2015brand/load_bg.jpg) center top no-repeat;background-size:100%;height:100%;overflow: hidden;}
@@ -118,7 +118,7 @@ button{
 #contentdiv .ztCon{width:12.15rem;margin:5.875rem auto 0;}
 #contentdiv .ztArea img{width:12.15rem;height: 10.325rem;display:block;position: static;}
 .ztArea .gameBtn{width:10.45rem;margin: 2.075rem auto 0;}
-#label{float:left;color:#393a3e;font-size:1.4rem;margin:.2rem 0 0 .2rem;}
+#label{float:left;color:#393a3e;font.align-self: rem;-size:1.4rem;margin:.2rem 0 0 .2rem;}
 .fjMs{float:right;margin-right:.6rem;}
 #maindiv .fjMs img{float:left;width:3.12rem;height:3.36rem;position:static;margin-top:-.5rem;}
 .fjMs span{float:left;margin:.2rem 0 0 .4rem;color:#393a3e;}
