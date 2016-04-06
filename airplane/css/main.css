@@ -43,19 +43,21 @@ button{
 .oDiv2,.oDiv3,.oDiv4{
     width: 27rem;
     height:48rem;
-    background-size:100%;
     display: none;
     position:absolute;
     top:0;
     left:0;
     z-index:1;
     background:url(../image/bg1.jpg) no-repeat;
+    background-size:100%;
 }
 .oDiv3{
     background-image:url(../image/bg2.jpg);
+    background-size:100%;
 }
 .oDiv4{
     background-image:url(../image/bg3.jpg);
+    background-size:100%;
     z-index:5;
 }
 .oDiv4 .bmtdBtn{float:right;width:10.95rem;height:2.5rem;margin:14rem 2.6rem 0 0;text-indent:-99999em;}
