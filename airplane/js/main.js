@@ -1,17 +1,17 @@
-$(function(){
-    (function(){
+window.onload = function(){
+	(function(){
         var oTimer = setInterval(function(){
-        iNoww +=0.52;
-        if(iNoww > 22.2){
-            clearInterval(oTimer);
-            $(".loading").hide();
-            $("#startdiv").show();
-            return false;
-        };
-        $(".loadingAft").css("width",iNoww+"rem");
-    },100);
-})();
-});
+	        iNoww +=0.52;
+	        if(iNoww > 22.2){
+	            clearInterval(oTimer);
+	            $(".loading").hide();
+	            $("#startdiv").show();
+	            return false;
+	        };
+	        $(".loadingAft").css("width",iNoww+"rem");
+	    },100);
+	})();
+};
 var $$ = function(obj){ return typeof obj=="string" ? document.getElementById(obj) : obj};
 $(".mainCon").css("height",$(window).height());
 $$("startdiv").style.height = document.documentElement.clientHeight + "px";
