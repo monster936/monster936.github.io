@@ -57,8 +57,9 @@ var myfjW = 70;
 var myfjH = 70;
 var an = null;
 var apda = true;
-var resetPd = true;
+var resetPd = resetPdd = true;
 var wdpzBtn = false;
+var aNum = 0;
 $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
 var yidongFun = function(a){
       $(a).addClass("buji1");
@@ -124,6 +125,18 @@ var zantingcsFun = function(){
    zantingFun("#buji2","buji1");
    zantingFun("#buji3","buji1");
 };
+
+var restartGame = function(){
+	 setTimeout(function(){
+        $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
+        $("#buji,#buji1,#buji2,#buji3").removeClass("yt cz");
+        numCf = 5000;
+        clickStart("#buji","yt",numCf);
+        clickStart("#buji1","yt",numCf + 20000);
+        clickStart("#buji2","yt",numCf + 40000);
+        clickStart("#buji3","yt",numCf + 60000);
+    },15000)
+}
 
 /*创建飞机类*/
 function plan(hp,X,Y,sizeX,sizeY,score,dietime,sudu,boomimage,imagesrc,classNm){
@@ -268,12 +281,12 @@ function impact(obj, dobj,a) {
 
          if(a==2){ /*补给2*/
                 if(zdpd){
-                     chance = parseInt($("#haveChance").html()) + 1;
-                     $("#haveChance").html(chance);
-                      hbFun(".oDiv",".oDiv3");
+                 chance = parseInt($("#haveChance").html()) + 1;
+                 $("#haveChance").html(chance);
+                 hbFun(".oDiv",".oDiv3");
                 }
                 setTimeout(function(){
-                          zdpd = true;
+                  zdpd = true;
                 },25000)
                $("#buji1").stop();
                zdpd = false;
@@ -283,15 +296,15 @@ function impact(obj, dobj,a) {
             $("#buji1").addClass("cz");
          }
          if(a == 3){  /*补给3*/
-               if(ppd == 1){
+              if(ppd == 1){
                   hbFun(".oDiv",".oDiv2");
               }
             setTimeout(function(){
-                     zdLeft = 28;
-                     fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
-                    swTime1 = 400;
-                    swTime2 = 780;
-                    ppd = 1;
+                zdLeft = 28;
+                fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
+                swTime1 = 400;
+                swTime2 = 780;
+                ppd = 1;
             },25000)
             ppd= 0;
             zdLeft = 23;
@@ -306,7 +319,8 @@ function impact(obj, dobj,a) {
            }
             if(a == 4){  /*补给4*/
             if(bBtn){
-                  hbFun(".oDiv",".oDiv3");
+              hbFun(".oDiv",".oDiv3");
+              aNum++;
             }
             selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/buji_fj.gif";
             selfplan.plansizeX = 105;
@@ -316,12 +330,12 @@ function impact(obj, dobj,a) {
             wdpzBtn = true;
             addClassFun();
             setTimeout(function(){
-                    bBtn = true;
-                    wdpzBtn = false;
-                    selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
-                    selfplan.plansizeX = 70;
-                    selfplan.plansizeY = 70;
-                    zdLeft = 28;
+                bBtn = true;
+                wdpzBtn = false;
+                selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
+                selfplan.plansizeX = 70;
+                selfplan.plansizeY = 70;
+                zdLeft = 28;
             },25000)
 
             $("#buji3").stop();
@@ -367,22 +381,20 @@ var yidong=function(){
           impact(ourPlan,$("#buji3")[0],4);
           addClassFun();
     }
-
+	console.log(aNum)
     if($(".add").length > 0 && !$("#buji3").is(":animated")){
         if(resetPd){
-            an = setTimeout(function(){
-                $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
-                $("#buji,#buji1,#buji2,#buji3").removeClass("yt cz");
-                numCf = 5000;
-                clickStart("#buji","yt",numCf);
-                clickStart("#buji1","yt",numCf + 35000);
-                clickStart("#buji2","yt",numCf + 65000);
-                clickStart("#buji3","yt",numCf + 95000);
-             },25000)
-      }
-      resetPd = false;
-  }
-   },true)
+           restartGame();
+      	}
+        resetPd = false;
+  	}
+    if($(".add").length > 0 && !$("#buji3").is(":animated") && (aNum==2)){
+        if(resetPdd){
+           restartGame();
+      	}
+        resetPdd = false;
+  	}
+  },true);
   document.addEventListener('touchmove',preventDefault,false);
 
 //    document.getElementsByTagName('img')[0].style.left=selfplanX-selfplan.plansizeX/2+"px";
@@ -470,9 +482,9 @@ if(document.addEventListener){
         set=setInterval(start,20);
         numCf = 5000;
         contineFun("#buji","yt",numCf);
-        contineFun("#buji1","yt",numCf + 40000);
-        contineFun("#buji2","yt",numCf + 70000);
-        contineFun("#buji3","yt",numCf + 100000);
+        contineFun("#buji1","yt",numCf + 20000);
+        contineFun("#buji2","yt",numCf + 40000);
+        contineFun("#buji3","yt",numCf + 60000);
     });
 //    suspenddiv.getElementsByTagName("button")[1].addEventListener("click",chongxinkaishi,true);
     //为暂停界面的返回主页按钮添加事件
@@ -662,9 +674,9 @@ function begin(){
       });
     })();
     clickStart("#buji","yt",numCf);
-    clickStart("#buji1","yt",numCf + 40000);
-    clickStart("#buji2","yt",numCf + 70000);
-    clickStart("#buji3","yt",numCf + 100000);
+    clickStart("#buji1","yt",numCf + 20000);
+    clickStart("#buji2","yt",numCf + 40000);
+    clickStart("#buji3","yt",numCf + 60000);
    $("#oDiv").css("display","block");
     $(".oDiv1").css("display","block");
     startdiv.style.display="none";
