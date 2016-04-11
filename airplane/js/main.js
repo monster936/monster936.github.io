@@ -320,8 +320,8 @@ function impact(obj, dobj,a) {
               aNum++;
             }
             selfplan.imagenode.src = $(".bz9").attr("src");
-            selfplan.plansizeX = 105;
-            selfplan.plansizeY = 105;
+            selfplan.plansizeX = 200;
+            selfplan.plansizeY = 200;
             bBtn = false;
             wdpzBtn = true;
             addClassFun();
@@ -701,7 +701,7 @@ function jixu(){
 }
 
 $("#studentCome").bind("click",function(){
-       $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
+       $("#hbBg").css("position","fixed").animate({opacity : 1},300,function(){
           $(".ztArea").eq(1).removeAttr("id").show();
            $("#planscore").hide();
            $("#gameBtn").find("span:first").remove();
