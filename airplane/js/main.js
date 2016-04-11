@@ -1,16 +1,16 @@
 window.onload = function(){
-	(function(){
+    (function(){
         var oTimer = setInterval(function(){
-	        iNoww +=0.52;
-	        if(iNoww > 22.2){
-	            clearInterval(oTimer);
-	            $(".loading").hide();
-	            $("#startdiv").show();
-	            return false;
-	        };
-	        $(".loadingAft").css("width",iNoww+"rem");
-	    },100);
-	})();
+            iNoww +=0.4;
+            if(iNoww > 20){
+                clearInterval(oTimer);
+                $(".loading").hide();
+                $("#startdiv").show();
+                return false;
+            };
+            $(".loadingAft").css("width",iNoww+"rem");
+        },100);
+    })();
 };
 var $$ = function(obj){ return typeof obj=="string" ? document.getElementById(obj) : obj};
 $(".mainCon").css("height",$(window).height());
@@ -40,8 +40,7 @@ var chance = 1;
 var bBtn = true;
 var a = 1;
 var number=0;
-var zdLeft = 28;
-var fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png"
+var fjzd = $(".zd1").attr("src")
 /*加载页面开始*/
 var times = 2000;
 var iNoww = 0;
@@ -51,19 +50,19 @@ var pd = 1;
 var ppd = 1;
 var zdpd = true;
 var swTime1 = 400;
-var swTime2 = 780;
-var animateTime = 16000;
+var swTime2 = 580;
+var animateTime = 10000;
 var myfjW = 70;
 var myfjH = 70;
 var an = null;
 var apda = true;
-var resetPd = resetPdd = true;
+var resetPd = resetPdd = resetPddd = true;
 var wdpzBtn = false;
 var aNum = 0;
+var ad = 0;
 $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
 var yidongFun = function(a){
       $(a).addClass("buji1");
-      if($(a).find("span").length > 0) animateTime = 21000;
       if($(a)[0].bBtn){
           $(a).stop().animate({top : "33rem"},animateTime,function(){
                 $(a).addClass("cz").hide();
@@ -74,7 +73,6 @@ var clickStart = function(a,b,c){
     $(a)[0].aaa=setTimeout(function(){
            $(a).fadeIn(300);
            $(a).addClass(b);
-           $(a).find("span").addClass(b);
     },c);
     $(a)[0].bbb = setTimeout(function(){
           yidongFun(a);
@@ -94,16 +92,13 @@ var contineFun = function(a,b,c){
 var zantingFun = function(a,d){
      $(a).stop();
      $(a).removeClass(d);
-     $(a).find("span").removeClass(d);
 };
 
-var hbFun = function(a,b){
-    $(a).fadeOut(1000);
-    $(b).fadeIn(1000);
+var hbFun = function(a){
+    $(a).fadeIn(1000);
     setTimeout(function(){
-       $(b).fadeOut(1000);
-       $(a).fadeIn(1000);
-    },5000)
+       $(a).fadeOut(1000);
+    },3000)
 };
 
 var addClassFun = function(){
@@ -127,15 +122,15 @@ var zantingcsFun = function(){
 };
 
 var restartGame = function(){
-	 setTimeout(function(){
+     setTimeout(function(){
         $("#buji")[0].bBtn = $("#buji1")[0].bBtn = $("#buji2")[0].bBtn = $("#buji3")[0].bBtn =true;
         $("#buji,#buji1,#buji2,#buji3").removeClass("yt cz");
         numCf = 5000;
         clickStart("#buji","yt",numCf);
-        clickStart("#buji1","yt",numCf + 20000);
-        clickStart("#buji2","yt",numCf + 40000);
-        clickStart("#buji3","yt",numCf + 60000);
-    },15000)
+        clickStart("#buji1","yt",numCf + 15000);
+        clickStart("#buji2","yt",numCf + 30000);
+        clickStart("#buji3","yt",numCf + 45000);
+    },10000)
 }
 
 /*创建飞机类*/
@@ -189,13 +184,14 @@ function plan(hp,X,Y,sizeX,sizeY,score,dietime,sudu,boomimage,imagesrc,classNm){
 }
 
 /*创建子弹类*/
-function bullet(X,Y,sizeX,sizeY,imagesrc){
+function bullet(X,Y,sizeX,sizeY,imagesrc,oClass){
     this.bulletX=X;
     this.bulletY=Y;
     this.bulletimage=null;
     this.bulletattach=1;
     this.bulletsizeX=sizeX;
     this.bulletsizeY=sizeY;
+    this.oClass= oClass;
    //行为移动行为*/
     this.bulletmove=function(){
         this.bulletimage.style.top=this.bulletimage.offsetTop-16+"px";
@@ -205,6 +201,7 @@ function bullet(X,Y,sizeX,sizeY,imagesrc){
         this.bulletimage.style.left= this.bulletX+"px";
         this.bulletimage.style.top= this.bulletY+"px";
         this.bulletimage.src=imagesrc;
+        this.bulletimage.className = this.oClass;
         mainDiv.appendChild(this.bulletimage);
     }
     this.init();
@@ -212,7 +209,7 @@ function bullet(X,Y,sizeX,sizeY,imagesrc){
 
 /*创建单行子弹类*/
 function oddbullet(X,Y){
-    bullet.call(this,X,Y,6,14,fjzd);
+    bullet.call(this,X,Y,6,14,fjzd,"zd");
 }
 
 /*创建敌机类 */
@@ -225,8 +222,8 @@ function random(min,max){
 }
 /*创建本方飞机类*/
 function ourplan(X,Y){
-    var imagesrc="http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
-    plan.call(this,1,X,Y,myfjW,myfjH,0,660,0,"http://zhenimg.com/marketpic/appimg/2015brand/bf_fjbz.gif",imagesrc);
+    var imagesrc=$(".bz8").attr("src");
+    plan.call(this,1,X,Y,myfjW,myfjH,0,660,0,$(".bz1").attr("src"),imagesrc);
     this.imagenode.setAttribute('id','ourplan');
 }
 
@@ -258,32 +255,32 @@ function impact(obj, dobj,a) {
     if (px >= o.x && px <= o.x + o.w && py >= o.y && py <= o.y + o.h && px >= d.x && px <= d.x + d.w && py >= d.y && py <= d.y + d.h) { 
         if(a == 1){  /*补给1*/
                if(pd == 1){
-                  hbFun(".oDiv",".oDiv2");
+                  hbFun(".oDiv2");
               }
             setTimeout(function(){
-                     zdLeft = 28;
-                     fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
+                     fjzd = $(".zd1").attr("src");
                      swTime1 = 400;
-                     swTime2 = 780;
+                     swTime2 = 580;
                      pd = 1;
+                     $(".mainCon").removeClass("aa");
             },25000)
             pd= 0;
-            zdLeft = 23;
             swTime1 = 80;
-            swTime2 = 20;
-            fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet2.png"
+            swTime2 = 180;
+            fjzd = $(".zd2").attr("src");
             $("#buji").stop();
             $("#buji").fadeOut(300,function(){
                 $("#buji").css("top",0);
             });
             $("#buji").addClass("cz");
+            $(".mainCon").addClass("aa");
            }
 
          if(a==2){ /*补给2*/
                 if(zdpd){
                  chance = parseInt($("#haveChance").html()) + 1;
                  $("#haveChance").html(chance);
-                 hbFun(".oDiv",".oDiv3");
+                  hbFun(".oDiv2");
                 }
                 setTimeout(function(){
                   zdpd = true;
@@ -297,45 +294,43 @@ function impact(obj, dobj,a) {
          }
          if(a == 3){  /*补给3*/
               if(ppd == 1){
-                  hbFun(".oDiv",".oDiv2");
+                  hbFun(".oDiv2");
               }
             setTimeout(function(){
-                zdLeft = 28;
-                fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet1.png";
+                fjzd = $(".zd1").attr("src");
                 swTime1 = 400;
-                swTime2 = 780;
+                swTime2 = 580;
                 ppd = 1;
+                $(".mainCon").removeClass("aa");
             },25000)
             ppd= 0;
-            zdLeft = 23;
-            fjzd = "http://zhenimg.com/marketpic/appimg/2015brand/bullet2.png";
+            fjzd = $(".zd2").attr("src");
             swTime1 = 80;
-            swTime2 = 20;
+            swTime2 = 180;
             $("#buji2").stop();
             $("#buji2").fadeOut(300,function(){
                 $("#buji2").css("top",0);
             });
             $("#buji2").addClass("cz");
+            $(".mainCon").addClass("aa");
            }
             if(a == 4){  /*补给4*/
             if(bBtn){
-              hbFun(".oDiv",".oDiv3");
+               hbFun(".oDiv2");
               aNum++;
             }
-            selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/buji_fj.gif";
+            selfplan.imagenode.src = $(".bz9").attr("src");
             selfplan.plansizeX = 105;
-            selfplan.plansizeY = 108;
-            zdLeft = 44;
+            selfplan.plansizeY = 105;
             bBtn = false;
             wdpzBtn = true;
             addClassFun();
             setTimeout(function(){
                 bBtn = true;
                 wdpzBtn = false;
-                selfplan.imagenode.src = "http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
+                selfplan.imagenode.src = $(".bz8").attr("src");
                 selfplan.plansizeX = 70;
                 selfplan.plansizeY = 70;
-                zdLeft = 28;
             },25000)
 
             $("#buji3").stop();
@@ -369,7 +364,7 @@ var yidong=function(){
         var aT = parseInt(ourPlan.style.top)/40 + parseInt(selfplan.plansizeY)/40;
         var aL = parseInt(ourPlan.style.left)/40 + parseInt(selfplan.plansizeX)/40;
         if($("#buji").is(":animated")){
-     	impact(ourPlan,buJi,1);
+        impact(ourPlan,buJi,1);
        }
       if($("#buji1").is(":animated")){
           impact(ourPlan,$("#buji1")[0],2);
@@ -381,19 +376,24 @@ var yidong=function(){
           impact(ourPlan,$("#buji3")[0],4);
           addClassFun();
     }
-	console.log(aNum)
     if($(".add").length > 0 && !$("#buji3").is(":animated")){
         if(resetPd){
            restartGame();
-      	}
+        }
         resetPd = false;
-  	}
+    }
     if($(".add").length > 0 && !$("#buji3").is(":animated") && (aNum==2)){
         if(resetPdd){
            restartGame();
-      	}
+        }
         resetPdd = false;
-  	}
+    }
+    if($(".add").length > 0 && !$("#buji3").is(":animated") && (aNum==3)){
+        if(resetPddd){
+           restartGame();
+        }
+        resetPddd = false;
+    }
   },true);
   document.addEventListener('touchmove',preventDefault,false);
 
@@ -482,9 +482,9 @@ if(document.addEventListener){
         set=setInterval(start,20);
         numCf = 5000;
         contineFun("#buji","yt",numCf);
-        contineFun("#buji1","yt",numCf + 20000);
-        contineFun("#buji2","yt",numCf + 40000);
-        contineFun("#buji3","yt",numCf + 60000);
+        contineFun("#buji1","yt",numCf + 15000);
+        contineFun("#buji2","yt",numCf + 30000);
+        contineFun("#buji3","yt",numCf + 45000);
     });
 //    suspenddiv.getElementsByTagName("button")[1].addEventListener("click",chongxinkaishi,true);
     //为暂停界面的返回主页按钮添加事件
@@ -514,7 +514,7 @@ var backgroundPositionY=0;
 /*开始函数*/
 function start(){
     $(".oDiv")[0].style.backgroundPositionY = backgroundPositionY+"px";
-    backgroundPositionY+=0.5;
+    backgroundPositionY+=1;
     if(backgroundPositionY==736){
         backgroundPositionY=0;
     }
@@ -523,18 +523,21 @@ function start(){
     if(mark==20){
         mark1++;
         //中飞机
-        if(mark1%5==0){
-            enemys.push(new enemy(6,5,250,46,60,5000,swTime1,random(1,4),"http://zhenimg.com/marketpic/appimg/2015brand/middle_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy3_fly_1.png","airplan"));
+        if(mark1%6==0){
+            enemys.push(new enemy(6,5,250,46,60,5000,swTime1,random(1,4),$(".bz3").attr("src"),$(".bz7").attr("src"),"airplan"));
         }
         //大飞机
         if(mark1==20){
-            enemys.push(new enemy(12,25,200,110,164,3000,swTime2,1,"http://zhenimg.com/marketpic/appimg/2015brand/big_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy2_fly_1.png","airplan airplan1"));
-            $(".airplan1").css("top","-10rem");
+            enemys.push(new enemy(12,10,200,110,164,3000,swTime2,1,$(".bz4").attr("src"),$(".bz6").attr("src"),"airplan airplan1"));
+           $(".airplan1").css("top","-164px");
+           if($(".airplan1").length == 2){
+                $("#maindiv .airplan1").eq(0).remove();
+           }
             mark1=0;
         }
        //小飞机
         else{
-            enemys.push(new enemy(1,1,255,34,24,1000,swTime1,random(1,5),"http://zhenimg.com/marketpic/appimg/2015brand/small_fjbz.gif","http://zhenimg.com/marketpic/appimg/2015brand/enemy1_fly_1.png","airplan"));
+            enemys.push(new enemy(1,1,255,34,24,1000,swTime1,random(1,5),$(".bz2").attr("src"),$(".bz5").attr("src"),"airplan"));
         }
         mark=0;
     }
@@ -564,7 +567,12 @@ function start(){
 
 /*创建子弹*/
     if(mark%4==0){
-        bullets.push(new oddbullet(parseInt(selfplan.imagenode.style.left)+zdLeft,parseInt(selfplan.imagenode.style.top)-5));
+        if($(".aa").length >0){
+            ad = (parseInt(selfplan.plansizeX) - 16)/2;
+        }else{
+             ad = (parseInt(selfplan.plansizeX) - 6)/2;
+        }
+        bullets.push(new oddbullet(parseInt(selfplan.imagenode.style.left)+ad,parseInt(selfplan.imagenode.style.top)-5));
     }
 
 /*移动子弹*/
@@ -598,25 +606,25 @@ function start(){
                             }
                     }
                     if(bBtn){
-                              selfplan.imagenode.src="http://zhenimg.com/marketpic/appimg/2015brand/bf_fjbz.gif";
+                              selfplan.imagenode.src=$(".bz1").attr("src");
                               var arrPlan = [ourPlan.style.top,ourPlan.style.left];
                               setTimeout(function(){
                                     ourPlan.style.display = "none";
-                                    selfplan.imagenode.src="http://zhenimg.com/marketpic/appimg/2015brand/my_feiji.png";
+                                    selfplan.imagenode.src=$(".bz8").attr("src");
                                     chance--;
                                     if(chance <= -1) chance = -1;
                                     if(chance == -1){
                                            clearInterval(set);
                                            $("#audio").find("audio").get(0).pause();
-                                           $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
-                                               $("#endGame").show();
-                                               $("#planscore").html($("#label").html());
+                                           $("#endGame img").hide();
+                                            $("#endGame").fadeIn(500,function(){
+                                                $("#planscore").html($("#label").html());
                                             });
                                             zantingcsFun();
                                             return false;
                                     }else{
-                                    	ourPlan.style.top = document.documentElement.clientHeight - selfplan.plansizeY - 10 + "px";
-                                    	ourPlan.style.left = (document.documentElement.clientWidth - selfplan.plansizeX)/2 + "px";
+                                        ourPlan.style.top = document.documentElement.clientHeight - selfplan.plansizeY - 10 + "px";
+                                        ourPlan.style.left = (document.documentElement.clientWidth - selfplan.plansizeX)/2 + "px";
                                     }
                                     if(chance <=-1) chance = 0;
                                     haveChance.innerHTML = chance;
@@ -674,9 +682,9 @@ function begin(){
       });
     })();
     clickStart("#buji","yt",numCf);
-    clickStart("#buji1","yt",numCf + 20000);
-    clickStart("#buji2","yt",numCf + 40000);
-    clickStart("#buji3","yt",numCf + 60000);
+    clickStart("#buji1","yt",numCf + 15000);
+    clickStart("#buji2","yt",numCf + 30000);
+    clickStart("#buji3","yt",numCf + 45000);
    $("#oDiv").css("display","block");
     $(".oDiv1").css("display","block");
     startdiv.style.display="none";
@@ -694,7 +702,7 @@ function jixu(){
 
 $("#studentCome").bind("click",function(){
        $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
-           $("#endGame").show();
+          $(".ztArea").eq(1).removeAttr("id").show();
            $("#planscore").hide();
            $("#gameBtn").find("span:first").remove();
            $("#gameBtn").prepend('<span id="startGame" onclick="begin();">开始游戏</span>');
@@ -702,21 +710,22 @@ $("#studentCome").bind("click",function(){
                   $("#hbBg").animate({opacity :0},300,function(){
                       $("#hbBg").css("position","static");
                   });
-                  $("#endGame").hide();
+                  $(".ztArea").eq(1).hide();
              });
         });
  });
 
   $("#zmBtn").bind("click",function(){
+        $(".ztArea").eq(1).find("img").show();
           $(".oDiv4").show();
          $("#hbBg").animate({opacity :0},300,function(){
             $("#hbBg").css("position","static");
         });
-        $("#endGame").hide();
+        $(".ztArea").eq(1).hide();
     });
   $(".bmtdBtn").bind("click",function(){
          $("#hbBg").css("position","fixed").animate({opacity : .5},300,function(){
-           $("#endGame").show();
+          $(".ztArea").eq(1).removeAttr("id").show();
            $("#planscore").hide();
           $("#gameBtn").find("span:first").remove();
            $("#gameBtn").prepend('<span id="startGame1" onclick="jixu()">继续游戏</span>');
