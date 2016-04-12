@@ -320,8 +320,8 @@ function impact(obj, dobj,a) {
               aNum++;
             }
             selfplan.imagenode.src = $(".bz9").attr("src");
-            selfplan.plansizeX = 200;
-            selfplan.plansizeY = 200;
+            selfplan.plansizeX = 105;
+            selfplan.plansizeY = 105;
             bBtn = false;
             wdpzBtn = true;
             addClassFun();
